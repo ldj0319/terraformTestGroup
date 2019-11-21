@@ -2,4 +2,5 @@
 
 *.tfstate
 *.tfvars
+*.backup
 remote_state.tf
