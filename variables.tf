@@ -46,6 +46,10 @@ variable "container_name" {
 variable "state_name" {
 }
 
+variable "rg_name_state" {
+  
+}
+
 variable "project_name" {
 }
 
