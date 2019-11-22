@@ -10,7 +10,3 @@ variable "tags" {
 variable "rg_name" {
   
 }
-
-variable "Vnet_name" {
-  
-}
