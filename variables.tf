@@ -3,6 +3,11 @@ variable "location" {
   default     = "australiaeast"
 }
 
+variable "state_location" {
+  description = "Where to deploy my resources"
+  default     = "australiaeast"
+}
+
 variable "rg_name" {
   description = "Name of the resource group"
 }
@@ -28,6 +33,10 @@ variable "network_interface_name" {
 }
 
 variable "tags" {
+  description = "tags"
+}
+
+variable "state_tags" {
   description = "tags"
 }
 

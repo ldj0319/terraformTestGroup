@@ -18,8 +18,8 @@ module "state" {
     rg_name = var.rg_name_state
     storage_account_name = var.storage_account_name
     container_name = var.container_name
-    location = var.location
-    tags = var.tags
+    location = var.state_location
+    tags = var.state_tags
 
 }
 
