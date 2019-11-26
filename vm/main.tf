@@ -1,3 +1,4 @@
+#create subnet under virtual network called "var.Vnet_name"
 resource "azurerm_subnet" "subnet" {
     name                 = var.subnet_name
     resource_group_name  = var.rg
@@ -5,6 +6,7 @@ resource "azurerm_subnet" "subnet" {
     address_prefix       = var.subnet_prefix
 }
 
+#create public ip
 resource "azurerm_public_ip" "test" {
     name                = var.public_ip_name
     location            = var.location
@@ -12,6 +14,8 @@ resource "azurerm_public_ip" "test" {
     allocation_method   = "Static"
 }
 
+#create network interface called "var.network_interface_name" 
+#
 resource "azurerm_network_interface" "test" {
     name                = var.network_interface_name
     location            = var.location
@@ -26,6 +30,11 @@ resource "azurerm_network_interface" "test" {
     tags = var.tags
 }
 
+#create virtual machine using network interface id
+#Ubuntu 18.04 will be created
+#disk called "var.os_disk_name" will be created
+#to login to virtual machine, run "ssh var.username@public_ip"
+#then enter the password
 resource "azurerm_virtual_machine" "main" {
     name                  = var.virtual_machine_name
     location              = var.location

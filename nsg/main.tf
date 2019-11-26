@@ -1,3 +1,4 @@
+#create azure network security group called "var.name" under resource group called "var.rg"
 resource "azurerm_network_security_group" "myNSG" {
         resource_group_name = var.rg
         name                = var.name
@@ -5,6 +6,9 @@ resource "azurerm_network_security_group" "myNSG" {
         tags                = var.tags
 }
 
+#Create security rules under security group called "var.name"
+#lower number in priorty has higher priority
+#"*" means any type
 resource "azurerm_network_security_rule" "rule3" {
   name                        = "Outbound"
   priority                    = 100

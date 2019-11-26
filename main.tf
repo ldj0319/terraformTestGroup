@@ -1,7 +1,9 @@
+#provider
 provider "azurerm" { 
     version = "1.36.0" 
 } 
 
+#create resource group for the other resources (except state)
 module "rg" {
     source = "./rg"
 
@@ -10,6 +12,9 @@ module "rg" {
     tags = var.tags
 
 } 
+
+# create storage account, container and resource group for state
+# this should not be changed (do not uncomment the following module unless you want to create everything from begginning)
 
 # module "state" {
 #     source = "./state"
@@ -22,6 +27,7 @@ module "rg" {
 
 # }
 
+#network security group module
 module "my_nsg_module" {
     source = "./nsg"
 
@@ -31,6 +37,8 @@ module "my_nsg_module" {
     tags                = var.tags
 }
 
+#network module
+#it will create Vnet and route table
 module "my_network" {
     source = "./network"
 
@@ -42,6 +50,8 @@ module "my_network" {
     rg                      = module.rg.obj_rg.name
 }
 
+#vm module
+#it will create one virtual machine
 module "my_vm" {
     source = "./vm"
 
@@ -63,6 +73,8 @@ module "my_vm" {
   
 }
 
+#vm module
+#it will create another virtual machine
 module "my_vm2" {
     source = "./vm"
 
