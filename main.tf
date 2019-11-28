@@ -55,21 +55,22 @@ module "my_network" {
 module "my_vm" {
     source = "./vm"
 
-    Vnet_name               = module.my_network.obj_Vnet.name
-    subnet_prefix           = var.subnet_prefix
-    subnet_name             = var.subnet_name
-    public_ip_name          = var.public_ip_name
-    network_interface_name  = var.network_interface_name
-    virtual_machine_name    = var.virtual_machine_name
-    ip_config_name          = var.ip_config_name
-    os_disk_name            = var.os_disk_name
-    location                = var.location  
-    tags                    = var.tags
-    rg                      = module.rg.obj_rg.name
+    Vnet_name                   = module.my_network.obj_Vnet.name
+    subnet_prefix               = var.subnet_prefix
+    subnet_name                 = var.subnet_name
+    public_ip_name              = var.public_ip_name
+    network_interface_name      = var.network_interface_name
+    network_security_group_id   = module.my_nsg_module.obj_nsg.id
+    virtual_machine_name        = var.virtual_machine_name
+    ip_config_name              = var.ip_config_name
+    os_disk_name                = var.os_disk_name
+    location                    = var.location  
+    tags                        = var.tags
+    rg                          = module.rg.obj_rg.name
 
-    hostname                = var.hostname
-    username                = var.username
-    password                = var.password
+    hostname                    = var.hostname
+    username                    = var.username
+    password                    = var.password
   
 }
 
@@ -78,20 +79,21 @@ module "my_vm" {
 module "my_vm2" {
     source = "./vm"
 
-    Vnet_name               = module.my_network.obj_Vnet.name
-    subnet_prefix           = var.subnet_prefix2
-    subnet_name             = var.subnet_name2
-    public_ip_name          = var.public_ip_name2
-    network_interface_name  = var.network_interface_name2
-    virtual_machine_name    = var.virtual_machine_name2
-    ip_config_name          = var.ip_config_name2
-    os_disk_name            = var.os_disk_name2
-    location                = var.location  
-    tags                    = var.tags
-    rg                      = module.rg.obj_rg.name
+    Vnet_name                   = module.my_network.obj_Vnet.name
+    subnet_prefix               = var.subnet_prefix2
+    subnet_name                 = var.subnet_name2
+    public_ip_name              = var.public_ip_name2
+    network_interface_name      = var.network_interface_name2
+    network_security_group_id   = module.my_nsg_module.obj_nsg.id
+    virtual_machine_name        = var.virtual_machine_name2
+    ip_config_name              = var.ip_config_name2
+    os_disk_name                = var.os_disk_name2
+    location                    = var.location  
+    tags                        = var.tags
+    rg                          = module.rg.obj_rg.name
 
-    hostname                = var.hostname2
-    username                = var.username2
-    password                = var.password2
+    hostname                    = var.hostname2
+    username                    = var.username2
+    password                    = var.password2
   
 }

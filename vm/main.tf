@@ -15,17 +15,18 @@ resource "azurerm_public_ip" "test" {
 }
 
 #create network interface called "var.network_interface_name" 
-#
+#connect network interface to security group, "var.network_security_group.id"
 resource "azurerm_network_interface" "test" {
-    name                = var.network_interface_name
-    location            = var.location
-    resource_group_name = var.rg
+    name                        = var.network_interface_name
+    location                    = var.location
+    resource_group_name         = var.rg
+    network_security_group_id   = var.network_security_group_id
 
     ip_configuration {
         name                          = var.ip_config_name
         subnet_id                     = "${azurerm_subnet.subnet.id}"
         private_ip_address_allocation = "Dynamic"
-        public_ip_address_id            = "${azurerm_public_ip.test.id}"
+        public_ip_address_id          = "${azurerm_public_ip.test.id}"
     }
     tags = var.tags
 }
