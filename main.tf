@@ -5,6 +5,7 @@ provider "azurerm" {
 } 
 
 #create resource group for the other resources (except state)
+#name will be "var.rg_name"
 module "rg" {
     source = "./rg"
 
